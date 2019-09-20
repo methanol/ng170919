@@ -1,0 +1,15 @@
+<mat-sidenav-container >
+  <mat-sidenav  mode="side"  #drawer [opened]="isOpen">
+    <mat-list>
+      <mat-list-item>
+        Dashboard
+      </mat-list-item>
+      <mat-list-item>
+        Events
+      </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <button (click)="toggle()">Toggle</button>
+  </mat-sidenav-content>
+</mat-sidenav-container>

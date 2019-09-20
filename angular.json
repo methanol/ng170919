@@ -11,8 +11,12 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
+            "customWebpackConfig": {
+              "path": "./webpack.partial.js",
+              "replaceDuplicatePlugins": true
+            },
             "outputPath": "dist/ng170919",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -25,7 +29,8 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+            ]
           },
           "configurations": {
             "production": {
@@ -114,6 +119,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "ng170919"
 }
