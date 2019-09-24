@@ -1,11 +1,19 @@
 import { NgModule } from '@angular/core';
-import { MatListModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
+import {
+  MatButtonModule, MatCardModule, MatGridListModule,
+  MatIconModule, MatListModule, MatProgressSpinnerModule, MatSidenavModule, MatToolbarModule
+} from '@angular/material';
 
 @NgModule({
   exports: [
     MatToolbarModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule,
+    MatGridListModule,
+    MatProgressSpinnerModule
   ]
 })
 export class SharedModule {

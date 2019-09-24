@@ -1,5 +1,5 @@
 <mat-sidenav-container >
-  <mat-sidenav  mode="side"  #drawer [opened]="isOpen">
+  <mat-sidenav  mode="side"  #drawer>
     <mat-list>
       <mat-list-item>
         Dashboard
@@ -7,9 +7,10 @@
       <mat-list-item>
         Events
       </mat-list-item>
+      <ng-content select=".subtitle"></ng-content>
     </mat-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <button (click)="toggle()">Toggle</button>
+    <ng-container #container></ng-container>
   </mat-sidenav-content>
 </mat-sidenav-container>

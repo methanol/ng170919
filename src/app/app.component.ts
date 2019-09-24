@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
+import { MatSidenav } from '@angular/material';
+import { IProduct, products$ } from './mock';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  // interpolation: ['/', '\\']
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class AppComponent {
   public title: { text: string, subtitle: { text: string } } = {
@@ -12,8 +15,13 @@ export class AppComponent {
     subtitle: {text: 'Subtitle'}
   };
 
+  public products$: Observable<IProduct[]> = products$;
 
-  public onClickTest(el: HTMLImageElement): void {
-    console.log(el);
+  public isShow: boolean = true;
+
+  public drawer: MatSidenav;
+
+  public setSideNav(drawer: MatSidenav): void {
+    Promise.resolve().then(() => this.drawer = drawer);
   }
 }

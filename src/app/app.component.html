@@ -1,4 +1,18 @@
-<app-header [title]="title.text"></app-header>
-<app-sidenav></app-sidenav>
+<app-header [title]="title.text" [drawer]="drawer"></app-header>
+<app-sidenav (setSideNavControl)="setSideNav($event)">
+  <ng-template #content>
+    <mat-grid-list cols="4" [rowHeight]="500" *ngIf="products$ | async as products; else load">
+      <mat-grid-tile *ngFor="let product of products; odd as isOdd">
+        <app-product-card [product]="product" [isOdd]="isOdd"></app-product-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </ng-template>
+  <ng-template #load>
+    <div class="load-container">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
 
-<h3>Angular</h3>
+</app-sidenav>
+
+

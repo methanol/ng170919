@@ -1,1 +1,6 @@
-<mat-toolbar color="primary">My App</mat-toolbar>
+<mat-toolbar color="primary">
+  <button mat-button (click)="toggleDrawer()">
+    <mat-icon matListIcon>view_headline</mat-icon>
+  </button>
+  <h3 [style]="titleColor" > {{title}}</h3>
+</mat-toolbar>

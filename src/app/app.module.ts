@@ -2,18 +2,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    SidenavComponent  // let/const pipe/directive
+    SidenavComponent,
+    ProductCardComponent  // let/const pipe/directive
   ],
   imports: [
-    NoopAnimationsModule,
+    BrowserAnimationsModule,
     BrowserModule,
     SharedModule// import
   ],
