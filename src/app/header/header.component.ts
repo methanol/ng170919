@@ -26,6 +26,12 @@ export class HeaderComponent implements OnChanges,
   @Input()
   public drawer: MatSidenav;
 
+  public rates: { value: number, currency: string }[] = [
+    {value: 1, currency: 'USD'},
+    {value: 10, currency: 'EUR'},
+    {value: 14, currency: 'RUB'},
+  ];
+
   public titleColor: SafeStyle = this._sanitizer.bypassSecurityTrustStyle('color: orange');
 
   public constructor(

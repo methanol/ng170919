@@ -2,5 +2,6 @@
   <button mat-button (click)="toggleDrawer()">
     <mat-icon matListIcon>view_headline</mat-icon>
   </button>
-  <h3 [style]="titleColor" > {{title}}</h3>
+  <h3 [style]="titleColor"> {{title}}</h3>
+  <app-exchange-rate [rates]="rates"></app-exchange-rate>
 </mat-toolbar>

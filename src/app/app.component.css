@@ -1,7 +1,9 @@
 h3 {
   color: red;
 }
-
+.products-search {
+  width: 100%;
+}
 .load-container {
   position: absolute;
   top: 0;

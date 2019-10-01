@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { MatSidenav } from '@angular/material';
+import { MatCheckboxChange, MatSidenav } from '@angular/material';
 import { IProduct, products$ } from './mock';
 import { Observable } from 'rxjs';
 
@@ -15,6 +15,9 @@ export class AppComponent {
     subtitle: {text: 'Subtitle'}
   };
 
+  public searchTerm: string = '';
+  public onlyFavorites: boolean = false;
+
   public products$: Observable<IProduct[]> = products$;
 
   public isShow: boolean = true;
@@ -23,5 +26,13 @@ export class AppComponent {
 
   public setSideNav(drawer: MatSidenav): void {
     Promise.resolve().then(() => this.drawer = drawer);
+  }
+
+  public search({target}: Event): void {
+    this.searchTerm = (target as HTMLInputElement).value;
+  }
+
+  public toggleOnlyFavorites({checked}: MatCheckboxChange): void {
+    this.onlyFavorites = checked;
   }
 }

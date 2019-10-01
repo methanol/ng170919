@@ -6,13 +6,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { ProductCardComponent } from './product-card/product-card.component';
+import { ProductsFilterPipe } from './products-filter.pipe';
+import { ExchangeRateComponent } from './header/exchange-rate/exchange-rate.component';
+import { ExchangeRatesDirective } from './header/exchange-rate/exchange-rates.directive';
+import { HiddenDirective } from './header/exchange-rate/hidden.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     SidenavComponent,
-    ProductCardComponent  // let/const pipe/directive
+    ProductCardComponent,
+    ProductsFilterPipe,
+    ExchangeRateComponent,
+    ExchangeRatesDirective,
+    HiddenDirective  // let/const pipe/directive
   ],
   imports: [
     BrowserAnimationsModule,
