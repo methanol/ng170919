@@ -1,7 +1,8 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { MatCheckboxChange, MatSidenav } from '@angular/material';
-import { IProduct, products$ } from './mock';
+import { IProduct } from './mock';
 import { Observable } from 'rxjs';
+import { ProductsService } from './products.service';
 
 @Component({
   selector: 'app-root',
@@ -18,11 +19,20 @@ export class AppComponent {
   public searchTerm: string = '';
   public onlyFavorites: boolean = false;
 
-  public products$: Observable<IProduct[]> = products$;
+  public products$!: Observable<IProduct[]>;
 
   public isShow: boolean = true;
 
-  public drawer: MatSidenav;
+  public drawer!: MatSidenav;
+
+  public constructor(
+    private productsService: ProductsService
+  ) {
+  }
+
+  public ngOnInit(): void {
+    this.products$ = this.productsService.getProducts();
+  }
 
   public setSideNav(drawer: MatSidenav): void {
     Promise.resolve().then(() => this.drawer = drawer);

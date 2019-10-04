@@ -23,7 +23,7 @@ export class ExchangeRatesDirective implements OnInit {
   public context: any;
   public index: number = 0;
 
-  private intervalID: number;
+  private intervalID!: number;
 
   public constructor(
     private readonly tpl: TemplateRef<any>,

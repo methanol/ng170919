@@ -21,10 +21,10 @@ export class HeaderComponent implements OnChanges,
   OnInit, DoCheck, AfterViewInit, AfterViewChecked, AfterContentInit, AfterContentChecked {
 
   @Input()
-  public title: string;
+  public title!: string;
 
   @Input()
-  public drawer: MatSidenav;
+  public drawer!: MatSidenav;
 
   public rates: { value: number, currency: string }[] = [
     {value: 1, currency: 'USD'},

@@ -21,13 +21,13 @@ export class SidenavComponent implements OnInit {
   public setSideNavControl: EventEmitter<MatSidenav> = new EventEmitter();
 
   @ViewChild('drawer', {static: true})
-  public drawer: MatSidenav;
+  public drawer!: MatSidenav;
   @ViewChild('container', {static: true, read: ViewContainerRef})
-  public container: ViewContainerRef;
+  public container!: ViewContainerRef;
 
 
   @ContentChild('content', {static: true})
-  public templateContent: TemplateRef<any>;
+  public templateContent!: TemplateRef<any>;
 
   public ngOnInit(): void {
     this.container.createEmbeddedView(this.templateContent);
