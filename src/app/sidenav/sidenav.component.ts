@@ -9,11 +9,13 @@ import {
   ViewContainerRef
 } from '@angular/core';
 import { MatSidenav } from '@angular/material';
+import { ExampleService } from '../example.service';
 
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.css']
+  styleUrls: ['./sidenav.component.css'],
+  providers: [ExampleService]
 })
 export class SidenavComponent implements OnInit {
 
@@ -28,6 +30,7 @@ export class SidenavComponent implements OnInit {
 
   @ContentChild('content', {static: true})
   public templateContent!: TemplateRef<any>;
+
 
   public ngOnInit(): void {
     this.container.createEmbeddedView(this.templateContent);

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { InjectionToken, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,6 +14,9 @@ import { ProductsService } from './products.service';
 import { BASE_URL, BASE_URL_TOKEN } from './config';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './interceptor.service';
+import { ExampleService } from './example.service';
+import { ModalModule } from './modal/modal.module';
+import { CardConfirmModalComponent } from './product-card/card-confirm-modal/card-confirm-modal.component';
 
 
 @NgModule({
@@ -25,16 +28,19 @@ import { InterceptorService } from './interceptor.service';
     ProductsFilterPipe,
     ExchangeRateComponent,
     ExchangeRatesDirective,
-    HiddenDirective  // let/const pipe/directive
+    HiddenDirective,
+    CardConfirmModalComponent  // let/const pipe/directive
   ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
-    SharedModule// import
+    SharedModule, // import
+    ModalModule,
   ],
   exports: [], // export
   providers: [
     ProductsService,
+    ExampleService,
     {provide: BASE_URL_TOKEN, useValue: BASE_URL, multi: true},
     {
       provide: HTTP_INTERCEPTORS,
@@ -42,6 +48,7 @@ import { InterceptorService } from './interceptor.service';
       multi: true
     }
   ], // service registration
+  entryComponents: [CardConfirmModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {
