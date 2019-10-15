@@ -9,13 +9,11 @@ import {
   ViewContainerRef
 } from '@angular/core';
 import { MatSidenav } from '@angular/material';
-import { ExampleService } from '../example.service';
 
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.css'],
-  providers: [ExampleService]
 })
 export class SidenavComponent implements OnInit {
 

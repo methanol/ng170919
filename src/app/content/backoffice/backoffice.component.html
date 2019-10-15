@@ -1,0 +1,15 @@
+<app-header [title]="title.text" [drawer]="drawer"></app-header>
+<app-sidenav (setSideNavControl)="setSideNav($event)">
+  <ng-template #content>
+
+    <router-outlet></router-outlet>
+
+  </ng-template>
+  <ng-template #load>
+    <div class="load-container">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
+
+</app-sidenav>
+

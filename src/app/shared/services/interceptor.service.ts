@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { BASE_URL_TOKEN } from './config';
+import { BASE_URL_TOKEN } from '../../config';
 import { filter, map } from 'rxjs/operators';
 
 export class InterceptorService implements HttpInterceptor {

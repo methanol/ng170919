@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IProduct } from '../../mock';
+import { IProduct } from '../../products.service';
+
 
 @Component({
   selector: 'app-card-confirm-modal',

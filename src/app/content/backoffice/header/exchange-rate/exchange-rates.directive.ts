@@ -5,6 +5,9 @@ import { Directive, Input, OnInit, TemplateRef, ViewContainerRef } from '@angula
 })
 export class ExchangeRatesDirective implements OnInit {
 
+  @Input()
+  public appExchangeRates: any;
+
   @Input('appExchangeRatesFrom')
   public rates: { value: number, currency: string } [] = [];
 
@@ -33,6 +36,7 @@ export class ExchangeRatesDirective implements OnInit {
 
 
   public ngOnInit(): void {
+    console.log('appExchangeRates', this.appExchangeRates);
     this.context = {
       $implicit: this.rates[this.index],
       controller: {
