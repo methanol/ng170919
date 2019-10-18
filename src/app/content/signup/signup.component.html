@@ -1,1 +1,55 @@
-<p>signup works!</p>
+<div class="signup-content">
+  <mat-card>
+    <mat-card-content>
+      <div [formGroup]="signUpForm">
+        <p>Signup to continue</p>
+        <mat-form-field>
+          <input matInput type="text" placeholder="User name"
+                 formControlName="username"
+                 appUsernameValidator
+          />
+          <!--          <mat-error *ngIf="c?.errors?.onlyLetters as error">{{error}}</mat-error>-->
+        </mat-form-field>
+
+        <div fxLayout="row"
+             *ngFor="let c of signUpForm.get('emails').controls as controls; index as i;first as isFirst">
+          <div fxFlex="90" fxLayout="column">
+            <mat-form-field>
+              <input matInput type="text" placeholder="Email" [formControl]="c"/>
+            </mat-form-field>
+          </div>
+          <div fxFlex="10" fxLayout="column">
+            <mat-icon (click)="addEmail()" *ngIf="isFirst">add</mat-icon>
+            <mat-icon *ngIf="controls.length > 1" (click)="removeEmail(i)">delete</mat-icon>
+          </div>
+        </div>
+
+        <div>
+          <span>Male</span>
+          <app-switcher formControlName="male"></app-switcher>
+        </div>
+
+        <div formGroupName="password">
+          <mat-form-field>
+            <input matInput type="password" placeholder="Password" formControlName="pass"/>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="password" placeholder="Confirm password"
+                   formControlName="cpass"
+            />
+          </mat-form-field>
+          <mat-error *ngIf="signUpForm.get('password').errors?.notEqual as error">{{error}}</mat-error>
+        </div>
+        <button mat-raised-button color="primary"
+                (click)="signup(signUpForm.value)"
+                [disabled]="signUpForm.invalid"
+        > Signup
+        </button>
+        <a mat-button [routerLink]="['/login']">Login</a>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
+

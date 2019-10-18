@@ -8,6 +8,10 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { BASE_URL, BASE_URL_TOKEN } from '../config';
 import { InterceptorService } from './services/interceptor.service';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UsernameValidatorDirective } from './directives/username-validator.directive';
+import { ValidatorsService } from './services/validators.service';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   exports: [
@@ -24,6 +28,10 @@ import { CommonModule } from '@angular/common';
     MatInputModule,
     MatCheckboxModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    UsernameValidatorDirective,
+    FlexLayoutModule
   ],
   providers: [
     {
@@ -31,7 +39,8 @@ import { CommonModule } from '@angular/common';
       useClass: InterceptorService,
       multi: true
     }
-  ]
+  ],
+  declarations: [UsernameValidatorDirective]
 
 })
 export class SharedModule {
@@ -40,6 +49,7 @@ export class SharedModule {
       ngModule: SharedModule,
       providers: [
         AuthGuardService,
+        ValidatorsService,
         {provide: BASE_URL_TOKEN, useValue: BASE_URL, multi: true},
       ]
     };

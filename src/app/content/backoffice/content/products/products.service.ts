@@ -1,5 +1,6 @@
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Inject, Injectable } from '@angular/core';
 
 export interface IProduct {
   '_id': string;
@@ -12,7 +13,7 @@ export interface IProduct {
 
 export class ProductsService {
   public constructor(
-    private http: HttpClient,
+   @Inject(HttpClient) private http: HttpClient,
   ) {
   }
 
