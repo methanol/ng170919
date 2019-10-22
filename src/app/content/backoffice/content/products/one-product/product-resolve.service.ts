@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
-import { IProduct } from '../products.service';
+import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { URL } from '../../../../../config';
 import { catchError, map } from 'rxjs/operators';
+import { IProduct } from '../../../../../store/reducers/products.reducer';
+import { Store } from '@ngrx/store';
+import { IStore } from '../../../../../store';
+import { Go } from '../../../../../store/actions/router.actions';
 
 @Injectable()
 export class ProductResolveService implements Resolve<IProduct | null> {
 
   public constructor(
-    private router: Router,
     private http: HttpClient,
+    private store: Store<IStore>,
   ) {
   }
 
@@ -20,12 +23,12 @@ export class ProductResolveService implements Resolve<IProduct | null> {
       .pipe(
         map((product: IProduct | null) => {
           if (!product) {
-            this.router.navigate([`/${URL.BACKOFFICE}`]);
+            this.store.dispatch(new Go({path: [`/${URL.BACKOFFICE}`]}));
           }
           return product;
         }),
         catchError(() => {
-          this.router.navigate([`/${URL.BACKOFFICE}`]);
+          this.store.dispatch(new Go({path: [`/${URL.BACKOFFICE}`]}));
           return of(null);
         })
       );

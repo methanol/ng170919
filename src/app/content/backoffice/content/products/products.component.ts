@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material';
-import { IProduct, ProductsService } from './products.service';
 import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { IStore } from '../../../../store';
+import { GetProductsPending } from '../../../../store/actions/products.actions';
+import { IProduct } from '../../../../store/reducers/products.reducer';
 
 @Component({
   selector: 'app-products',
@@ -18,12 +21,13 @@ export class ProductsComponent implements OnInit {
   public isShow: boolean = true;
 
   public constructor(
-    private productsService: ProductsService
+    private store: Store<IStore>,
   ) {
   }
 
   public ngOnInit(): void {
-    this.products$ = this.productsService.getProducts();
+    this.products$ = this.store.select('products');
+    this.store.dispatch(new GetProductsPending());
   }
 
   public search({target}: Event): void {

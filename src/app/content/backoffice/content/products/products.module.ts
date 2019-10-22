@@ -5,7 +5,6 @@ import { ProductsComponent } from './products.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductsFilterPipe } from './products-filter.pipe';
 import { SharedModule } from '../../../../shared/shared.module';
-import { ProductsService } from './products.service';
 import { OneProductComponent } from './one-product/one-product.component';
 import { ProductResolveService } from './one-product/product-resolve.service';
 
@@ -22,7 +21,6 @@ import { ProductResolveService } from './one-product/product-resolve.service';
     SharedModule
   ],
   providers: [
-    ProductsService,
     ProductResolveService
   ]
 })

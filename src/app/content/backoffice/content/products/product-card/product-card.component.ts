@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ModalService } from '../../../../../modal/modal.service';
 import { CardConfirmModalComponent } from './card-confirm-modal/card-confirm-modal.component';
-import { IProduct } from '../products.service';
+import { IProduct } from '../../../../../store/reducers/products.reducer';
 
 @Component({
   selector: 'app-product-card',

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IProduct } from '../../products.service';
+import { IProduct } from '../../../../../../store/reducers/products.reducer';
 
 
 @Component({
