@@ -1,4 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { interval } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +10,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 export class AppComponent {
 
-
+  public constructor() {
+  }
 
 }

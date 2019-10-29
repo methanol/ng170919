@@ -2,6 +2,7 @@ import { Observable, Subject } from 'rxjs';
 
 export interface IComponentObject {
   component: any;
+  resolver: any;
   context: any;
 }
 

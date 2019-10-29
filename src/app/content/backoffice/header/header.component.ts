@@ -4,6 +4,9 @@ import {
 } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
+import { Store } from '@ngrx/store';
+import { IStore } from '../../../store';
+import { LogoutPending } from '../../../store/actions/auth.actions';
 
 @Component({
   selector: 'app-header',
@@ -27,12 +30,17 @@ export class HeaderComponent {
   public titleColor: SafeStyle = this._sanitizer.bypassSecurityTrustStyle('color: orange');
 
   public constructor(
-    private readonly _sanitizer: DomSanitizer
+    private readonly _sanitizer: DomSanitizer,
+    private readonly store: Store<IStore>
   ) {
   }
 
   public toggleDrawer(): void {
     this.drawer.toggle();
+  }
+
+  public logout(): void {
+    this.store.dispatch(new LogoutPending());
   }
 
 }

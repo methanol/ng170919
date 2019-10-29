@@ -1,7 +1,6 @@
 import {
   Component,
   ComponentFactory,
-  ComponentFactoryResolver,
   ComponentRef,
   HostListener,
   OnInit,
@@ -26,19 +25,18 @@ export class ModalComponent implements OnInit {
 
   public constructor(
     private readonly  _modalService: ModalService,
-    private readonly  _cfr: ComponentFactoryResolver,
   ) {
   }
 
   public ngOnInit(): void {
     this._modalService.modalSequence$
-      .subscribe(({component, context}: IComponentObject) => {
+      .subscribe(({component, context, resolver}: IComponentObject) => {
         if (!component) {
           this.close();
           return;
         }
         this.isOpen = true;
-        this.childComponent = this._cfr.resolveComponentFactory(component);
+        this.childComponent = resolver.resolveComponentFactory(component);
         this._modalContext = this.modal.createComponent(this.childComponent);
         Object.keys(context).forEach(
           (key: string) => this._modalContext.instance[key] = context[key]

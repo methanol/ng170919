@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, ComponentFactoryResolver, Injector, Input } from '@angular/core';
 import { ModalService } from '../../../../../modal/modal.service';
 import { CardConfirmModalComponent } from './card-confirm-modal/card-confirm-modal.component';
 import { IProduct } from '../../../../../store/reducers/products.reducer';
@@ -16,7 +16,9 @@ export class ProductCardComponent {
   public isOdd!: boolean;
 
   public constructor(
-    private readonly modalService: ModalService
+    private readonly modalService: ModalService,
+    private readonly cfr: ComponentFactoryResolver,
+    private readonly injector: Injector
   ) {
   }
 
@@ -27,6 +29,7 @@ export class ProductCardComponent {
   public addToCart(product: IProduct): void {
     this.modalService.open({
       component: CardConfirmModalComponent,
+      resolver: this.cfr,
       context: {
         product: {...product},
         save: () => {
