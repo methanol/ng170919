@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-around center">
   <button mat-button (click)="toggleDrawer()">
     <mat-icon matListIcon>view_headline</mat-icon>
   </button>
@@ -7,10 +7,19 @@
   <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
     <mat-icon>more_vert</mat-icon>
   </button>
+
+  <div class="cart">
+    <mat-icon (click)="isOpen = true"
+              [matBadge]="totalCount$ | async" matBadgeColor="warn"
+    >shopping_cart
+    </mat-icon>
+    <app-cart [ngClass]="{closed: !isOpen}"></app-cart>
+  </div>
+
   <mat-menu #menu="matMenu">
-    <button mat-menu-item>
+    <button mat-menu-item (click)="logout()">
       <mat-icon>logout</mat-icon>
-      <span (click)="logout()">Log out</span>
+      <span>Log out</span>
     </button>
   </mat-menu>
 </mat-toolbar>

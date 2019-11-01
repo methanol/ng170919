@@ -1,0 +1,12 @@
+img {
+  height: 50px;
+  width: 50px;
+}
+
+mat-icon {
+  cursor: pointer;
+}
+
+.cart-product {
+  color: black;
+}

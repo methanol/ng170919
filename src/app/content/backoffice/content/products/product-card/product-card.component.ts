@@ -2,6 +2,9 @@ import { Component, ComponentFactoryResolver, Injector, Input } from '@angular/c
 import { ModalService } from '../../../../../modal/modal.service';
 import { CardConfirmModalComponent } from './card-confirm-modal/card-confirm-modal.component';
 import { IProduct } from '../../../../../store/reducers/products.reducer';
+import { Store } from '@ngrx/store';
+import { IStore } from '../../../../../store';
+import { AddProductToCart } from '../../../../../store/actions/cart.actions';
 
 @Component({
   selector: 'app-product-card',
@@ -18,7 +21,7 @@ export class ProductCardComponent {
   public constructor(
     private readonly modalService: ModalService,
     private readonly cfr: ComponentFactoryResolver,
-    private readonly injector: Injector
+    private readonly store: Store<IStore>
   ) {
   }
 
@@ -34,6 +37,7 @@ export class ProductCardComponent {
         product: {...product},
         save: () => {
           console.log('Save');
+          this.store.dispatch(new AddProductToCart(product));
           this.modalService.close();
         },
         close: () => {

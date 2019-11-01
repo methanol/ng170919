@@ -1,18 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { ModalModule } from './modal/modal.module';
 import { AppRoutingModule } from './app-routing.module';
-import { StoreModule } from '@ngrx/store';
+import { Store, StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { CustomSerializer, metaReducers, reducers } from './store';
+import { CustomSerializer, IStore, metaReducers, reducers } from './store';
 import { EffectsModule } from '@ngrx/effects';
 import { effects } from './store/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { serialize } from '@angular/compiler/src/i18n/serializers/xml_helper';
+import { CheckJWT } from './store/actions/auth.actions';
 
 
 @NgModule({
@@ -40,11 +40,21 @@ import { serialize } from '@angular/compiler/src/i18n/serializers/xml_helper';
       }
     )
   ],
-  providers: [], // service registration
+  providers: [{
+    provide: APP_INITIALIZER,
+    useFactory: initApp,
+    deps: [Store],
+    multi: true
+  }], // service registration
   bootstrap: [AppComponent]
 })
 export class AppModule {
 }
 
+function initApp(store: Store<IStore>): () => void {
+  return () => {
+    store.dispatch(new CheckJWT());
+  };
+}
 
 // Module, directive, pipe, service

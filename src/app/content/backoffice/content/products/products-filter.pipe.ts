@@ -8,7 +8,7 @@ import { IProduct } from '../../../../store/reducers/products.reducer';
 })
 export class ProductsFilterPipe implements PipeTransform {
 
-  public transform(products: IProduct[], searchTerm: string, onlyFavorites: boolean): IProduct[] {
+  public transform(products: IProduct[], searchTerm: string, onlyFavorites: boolean = false): IProduct[] {
     let result: IProduct[] = products;
     if (onlyFavorites) {
       result = result.filter((product: IProduct) => product.isFavorite === onlyFavorites);
