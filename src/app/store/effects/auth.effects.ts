@@ -76,7 +76,7 @@ export class AuthEffects {
   @Effect()
   public init$: Observable<AuthActionsType> = this.actions$
     .pipe(
-      ofType(AuthActions.CHECK_JWT),
+      ofType(ROOT_EFFECTS_INIT),
       switchMap(() => {
         return this.authService.checkUser()
           .pipe(

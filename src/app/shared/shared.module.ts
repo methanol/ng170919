@@ -1,6 +1,5 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import {
-  MatBadgeModule,
   MatButtonModule, MatCardModule, MatCheckboxModule, MatFormFieldModule, MatGridListModule,
   MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatProgressSpinnerModule, MatSidenavModule, MatToolbarModule
 } from '@angular/material';
@@ -34,8 +33,7 @@ import { AuthService } from './services/auth.service';
     ReactiveFormsModule,
     UsernameValidatorDirective,
     FlexLayoutModule,
-    MatMenuModule,
-    MatBadgeModule
+    MatMenuModule
   ],
   providers: [
     {

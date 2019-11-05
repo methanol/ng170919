@@ -1,6 +1,6 @@
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { filter, skip, switchMap, take } from 'rxjs/operators';
+import { skip, switchMap, take } from 'rxjs/operators';
 import { URL } from '../../config';
 import { Store } from '@ngrx/store';
 import { IStore } from '../../store';
@@ -20,8 +20,10 @@ export class AuthGuardService implements CanActivate {
       .select('auth')
       .pipe(
         // TODO how work with async
-        filter(({loading}: IAuthState) => !loading),
-        switchMap(({isLogged}: IAuthState) => {
+        skip(1),
+        take(1),
+        switchMap(({isLogged, loading}: IAuthState) => {
+          debugger
           if (!isLogged && (url === `/${URL.LOGIN}` || url === `/${URL.SIGNUP}`)) {
             return of(true);
           }

@@ -1,33 +1,16 @@
-import { ApplicationRef, ChangeDetectionStrategy, ChangeDetectorRef, Component, NgZone, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
+import { interval } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  encapsulation: ViewEncapsulation.Emulated,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class AppComponent {
 
-  public constructor(
-    private appRef: ApplicationRef,
-    private cdr: ChangeDetectorRef,
-    private zone: NgZone,
-  ) {
-    // this.zone.runOutsideAngular(() => {
-    //
-    // });
-    // vk.getUser((user) => {
-    //   this.zone.run(() => {
-    //     this.user = user;
-    //   });
-    // });
-
-    // this.appRef.tick();
+  public constructor() {
   }
 
 }
-
-// Event
-// Interval
-// zone.js

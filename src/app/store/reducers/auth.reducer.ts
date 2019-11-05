@@ -1,5 +1,5 @@
 import {
-  AuthActionsType, CheckJWT,
+  AuthActionsType,
   LoginFail,
   LoginPending,
   LoginSuccess,
@@ -57,12 +57,6 @@ export function authReducer(state: IAuthState = initialState, action: AuthAction
     return {
       ...state,
       loading: false
-    };
-  }
-  if (action instanceof CheckJWT) {
-    return {
-      ...state,
-      loading: true
     };
   }
   if (action instanceof LogoutSuccess) {

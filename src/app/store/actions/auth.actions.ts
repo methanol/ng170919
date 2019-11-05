@@ -13,8 +13,6 @@ export enum AuthActions {
   LOGOUT_PENDING = 'LOGOUT_PENDING',
   LOGOUT_SUCCESS = 'LOGOUT_SUCCESS',
   LOGOUT_FAIL = 'LOGOUT_FAIL',
-
-  CHECK_JWT = 'CHECK_JWT'
 }
 
 export class LoginPending implements Action {
@@ -63,10 +61,6 @@ export class LogoutFail implements Action {
   public readonly type: string = AuthActions.LOGOUT_FAIL;
 }
 
-export class CheckJWT implements Action {
-  public readonly type: string = AuthActions.CHECK_JWT;
-}
-
 export type AuthActionsType = LoginPending
   | LoginSuccess
   | LoginFail
@@ -75,5 +69,4 @@ export type AuthActionsType = LoginPending
   | SignUpFail
   | LogoutSuccess
   | LogoutFail
-  | LogoutPending
-  | CheckJWT;
+  | LogoutPending;
