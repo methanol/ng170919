@@ -1,18 +1,14 @@
 import { routerReducer, RouterReducerState, RouterStateSerializer } from '@ngrx/router-store';
 import { IProduct, productsReducer } from './reducers/products.reducer';
-import { ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store';
+import { ActionReducerMap } from '@ngrx/store';
 import { Params, RouterStateSnapshot } from '@angular/router';
-import { authReducer, IAuthState } from './reducers/auth.reducer';
-import { AuthActionsType, LogoutSuccess } from './actions/auth.actions';
 
 export interface IStore {
-  auth: IAuthState;
   products: IProduct[];
   router: RouterReducerState<IRouterStateUrl>;
 }
 
 export const reducers: ActionReducerMap<IStore, any> = {
-  auth: authReducer,
   products: productsReducer,
   router: routerReducer
 };
@@ -37,15 +33,3 @@ export class CustomSerializer implements RouterStateSerializer<IRouterStateUrl> 
     return {url, params, queryParams};
   }
 }
-
-
-export function logoutAndClearState(reducer: ActionReducer<IStore>): ActionReducer<IStore> {
-  return (state: IStore | undefined, action: AuthActionsType) => {
-    if (action instanceof LogoutSuccess) {
-      state = undefined;
-    }
-    return reducer(state, action);
-  };
-}
-
-export const metaReducers: MetaReducer<IStore>[] = [logoutAndClearState];

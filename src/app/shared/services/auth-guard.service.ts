@@ -1,11 +1,10 @@
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { skip, switchMap, take } from 'rxjs/operators';
+import {  switchMap } from 'rxjs/operators';
 import { URL } from '../../config';
 import { Store } from '@ngrx/store';
 import { IStore } from '../../store';
 import { Go } from '../../store/actions/router.actions';
-import { IAuthState } from '../../store/reducers/auth.reducer';
 
 export class AuthGuardService implements CanActivate {
 
@@ -16,14 +15,9 @@ export class AuthGuardService implements CanActivate {
 
   public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     const url: string = state.url;
-    return this.store
-      .select('auth')
+    return of(true)
       .pipe(
-        // TODO how work with async
-        skip(1),
-        take(1),
-        switchMap(({isLogged, loading}: IAuthState) => {
-          debugger
+        switchMap((isLogged: boolean) => {
           if (!isLogged && (url === `/${URL.LOGIN}` || url === `/${URL.SIGNUP}`)) {
             return of(true);
           }

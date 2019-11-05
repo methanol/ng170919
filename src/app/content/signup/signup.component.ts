@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { ValidatorsService } from '../../shared/services/validators.service';
-import { Store } from '@ngrx/store';
-import { IStore } from '../../store';
-import { SignUpPending } from '../../store/actions/auth.actions';
 
 @Component({
   selector: 'app-signup',
@@ -19,8 +16,7 @@ export class SignupComponent implements OnInit {
 
   public constructor(
     private fb: FormBuilder,
-    private validatorsService: ValidatorsService,
-    private store: Store<IStore>
+    private validatorsService: ValidatorsService
   ) {
   }
 
@@ -49,10 +45,7 @@ export class SignupComponent implements OnInit {
   }
 
   public signup(userForSignUp: any): void {
-    const {password: passwordGroup, ...user} = userForSignUp;
-    const {emails, ...currentUser} = user;
-    const userForSignup: any = {...currentUser, password: passwordGroup.pass, email: emails[0]};
-    this.store.dispatch(new SignUpPending(userForSignup));
+    console.log(userForSignUp);
   }
 
 }

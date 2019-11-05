@@ -22,8 +22,7 @@ import { ProductResolveService } from './one-product/product-resolve.service';
   ],
   providers: [
     ProductResolveService
-  ],
-  entryComponents: [CardConfirmModalComponent],
+  ]
 })
 export class ProductsModule {
 }

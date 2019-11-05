@@ -1,7 +1,7 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import {
   MatButtonModule, MatCardModule, MatCheckboxModule, MatFormFieldModule, MatGridListModule,
-  MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatProgressSpinnerModule, MatSidenavModule, MatToolbarModule
+  MatIconModule, MatInputModule, MatListModule, MatProgressSpinnerModule, MatSidenavModule, MatToolbarModule
 } from '@angular/material';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthGuardService } from './services/auth-guard.service';
@@ -12,7 +12,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsernameValidatorDirective } from './directives/username-validator.directive';
 import { ValidatorsService } from './services/validators.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { AuthService } from './services/auth.service';
 
 @NgModule({
   exports: [
@@ -32,8 +31,7 @@ import { AuthService } from './services/auth.service';
     FormsModule,
     ReactiveFormsModule,
     UsernameValidatorDirective,
-    FlexLayoutModule,
-    MatMenuModule
+    FlexLayoutModule
   ],
   providers: [
     {
@@ -50,7 +48,6 @@ export class SharedModule {
     return {
       ngModule: SharedModule,
       providers: [
-        AuthService,
         AuthGuardService,
         ValidatorsService,
         {provide: BASE_URL_TOKEN, useValue: BASE_URL, multi: true},

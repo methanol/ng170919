@@ -4,13 +4,4 @@
   </button>
   <h3 [style]="titleColor"> {{title}}</h3>
   <app-exchange-rate [rates]="rates"></app-exchange-rate>
-  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-    <mat-icon>more_vert</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item>
-      <mat-icon>logout</mat-icon>
-      <span (click)="logout()">Log out</span>
-    </button>
-  </mat-menu>
 </mat-toolbar>
